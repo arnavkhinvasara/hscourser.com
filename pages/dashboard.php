@@ -3,14 +3,7 @@ session_start();
 if(!isset($_SESSION["session_email"])){
 	header("Location: /login");
 }
-if(!isset($_SESSION["timestamp"])){
-	$_SESSION["timestamp"] = time();
-}
-else{
-	if((time() - $_SESSION["timestamp"]) > 172800){
-		header("Location: /logout");
-	}
-}
+
 $sess_email = $_SESSION["session_email"];
 //make query to sql database for full name for corresponding email
 $name = "";
