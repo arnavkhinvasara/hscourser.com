@@ -223,9 +223,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 	Select School:
                                                 	<select name="select_school">
                                                 		<option value="Select">Select</option>
-                                                		<option value="mhs+milpitas">MHS</option>
-                                                		<option value="hhs+cupertino">Homestead</option>
-                                                		<option value="sfhs+mountain_view">Saint Francis</option>
+                                                		<option value="mhs+milpitas" <?php if(isset($school)){if($school=="mhs+milpitas"){echo "selected='selected'";}} ?>>MHS</option>
+                                                		<option value="hhs+cupertino" <?php if(isset($school)){if($school=="hhs+cupertino"){echo "selected='selected'";}} ?>>Homestead</option>
+                                                		<option value="sfhs+mountain_view" <?php if(isset($school)){if($school=="sfhs+mountain_view"){echo "selected='selected'";}} ?>>Saint Francis</option>
                                                 	</select>
                                                 </div>
                                         </div>
