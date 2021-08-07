@@ -2,15 +2,15 @@
 $err_mess = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$full_name = trim($_POST["full_name"]);
-	$school = "MHS+Milpitas";
 	$email = trim($_POST["email"]);
 	$username = str_replace(" ", "+", $full_name);
 	$password = trim($_POST["password"]);
 	$confpw = trim($_POST["confpw"]);
 	$referred = trim($_POST["referred"]);
+	$school = $_POST["select_school"];
 	$pos_pages = array("explanation", "phpmyadmin", "about", "contact", "privacy", "terms", "register", "login", "dashboard", "forgotpassword", "logout", "schedule", "deleteschedule", "addfriends", "changename", "viewfriends", "deleteaccount","period0", "period1", "period2", "period3", "period4", "period5", "period6", "period7", "period8", "period9", "period10", "remove", "goals", "compare", "resolve", "changeschool", "favicon.ico");
 	//validation
-	if (!$full_name || !$school || !$email || !$username || !$password || !$confpw || !$referred){
+	if (!$full_name || !$email || !$username || !$password || !$confpw || !$referred || $school=="Select"){
 		$err_mess = "All fields are required.";
 	}
 	elseif (count(explode(" ", $full_name))<2){
@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			margin-top: 15px;
 			color: red;
 		}
-		.checklist_textbox{
+		.checklist_textbox, .drop_down_menu{
 			margin: 10px;
 		}
 		#for_full_name{
@@ -190,7 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					<div class="container">
 						<div class="checklist_textbox" id="for_full_name">
 							<div class="container">
-								<input type="text" name="full_name" value="<?php if(isset($full_name)) {echo $full_name;} ?>" placeholder="Display Name/Full Real Name" class="beg_text">
+								<input type="text" name="full_name" value="<?php if(isset($full_name)) {echo $full_name;} ?>" placeholder="Full Real Name" class="beg_text">
 							</div>
 						</div>
 					</div>
@@ -220,6 +220,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                         <div class="container">
                                                                 <input type="text" placeholder="Who Told You About This Site (Full Name)" class="beg_text" name="referred" value="<?php if(isset($referred)) {echo $referred;} ?>" />
                                                         </div>
+                                                </div>
+                                        </div>
+                                        <div class="container">
+                                                <div class="drop_down_menu">
+                                                	Select School:
+                                                	<select name="select_school">
+                                                		<option value="Select">Select</option>
+                                                		<option value="MHS+Milpitas">MHS</option>
+                                                		<option value="HHS+Cupertino">Homestead</option>
+                                                		<option value="SFHS+Mountain_View">Saint Francis</option>
+                                                	</select>
                                                 </div>
                                         </div>
 					<div class="container">

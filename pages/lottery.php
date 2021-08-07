@@ -7,7 +7,7 @@
 		array_push($ticketsArray, $row["Fullname"], $row["Referred"]);
 	}
 	foreach($ticketsArray as $key => $value){
-		if ($value=="" || $value=="Arnav" || $value=="Arnav Khinvasara"){
+		if ($value=="" || str_contains($value, "arnav")==false || str_contains($value, "Arnav")==false){
 			unset($ticketsArray[$key]);
 		}
 	}
