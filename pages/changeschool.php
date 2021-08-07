@@ -6,18 +6,14 @@ if(!isset($_SESSION["session_email"])){
 $sess_email = $_SESSION["session_email"];
 $err_mess = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$newschool = $_POST["newschool"];
+	$newschool = $_POST["select_school"];
 	//validation
-	if (!$newschool){
+	if ($newschool=="Select"){
 		$err_mess = "School field is required.";
-	}
-	elseif (strpos($newschool, "HS+")==False) {
-		$err_mess = "Please make sure to include your school's abbreviation and the city it is in.";
 	}
 	else{
 		//query to update name for user
 		require_once("connection.php");
-		$newschool = strtolower($newschool);
 		$u_statement = "UPDATE userdata SET School='$newschool' WHERE Email='$sess_email'";
 		$qu_statement = mysqli_query($conn, $u_statement);
 		header("Location: /dashboard");
@@ -124,7 +120,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				</div>
 				<form method="post" action="/changeschool">
 					<div class="container">
-						<input type="text" name="newschool" class="beg_text" placeholder="High School Abbreviation+City (Ex: NCPHS+Chicago)" value="<?php if(isset($newschool)) {echo $newschool;} ?>">
+						Select School:
+                    	<select name="select_school">
+                    		<option value="Select">Select</option>
+                    		<option value="mhs+milpitas">MHS</option>
+                    		<option value="hhs+cupertino">Homestead</option>
+                    		<option value="sfhs+mountain_view">Saint Francis</option>
+                    	</select>
 					</div>
 					<div class="container">
 						<input type="submit" name="submit" id="button" value="Change">

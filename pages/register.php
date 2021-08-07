@@ -19,9 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	elseif (count(explode(" ", $referred))<2){
 		$err_mess = "Please include the person's full name.";
 	}
-	elseif (strpos($school, "HS+")==False) {
-		$err_mess = "Please make sure to include your school's abbreviation and the city it is in.";
-	}
 	elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
 		$err_mess = "Please make sure your email address is valid.";
 	}
@@ -58,7 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			}
 			else{
 				$password = md5($password);
-				$school = strtolower($school);
 				$sql = "INSERT INTO userdata (Fullname, School, Email, Username, Password, Referred) VALUES ('$full_name', '$school', '$email', '$username', '$password', '$referred')";
 				$result = mysqli_query($conn, $sql);
 				if($result){
@@ -227,9 +223,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 	Select School:
                                                 	<select name="select_school">
                                                 		<option value="Select">Select</option>
-                                                		<option value="MHS+Milpitas">MHS</option>
-                                                		<option value="HHS+Cupertino">Homestead</option>
-                                                		<option value="SFHS+Mountain_View">Saint Francis</option>
+                                                		<option value="mhs+milpitas">MHS</option>
+                                                		<option value="hhs+cupertino">Homestead</option>
+                                                		<option value="sfhs+mountain_view">Saint Francis</option>
                                                 	</select>
                                                 </div>
                                         </div>
