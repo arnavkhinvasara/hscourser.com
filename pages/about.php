@@ -67,7 +67,7 @@
 			<div class="wrapper">
 				<div class="section_title">The Goal</div>
 				<ul class="about_ul">
-					<li>One goal of HS Courser is to provide high school students with a convenient (more convenient then posting stories on Instagram/Snapchat and messaging people directly) method of seeing their friends' schedules at the beginning of and during a school year. Schedules will include classes and periods. Another goal of HS Courser is to help high school students make new friends based on the classes and classmates they have.</li>
+					<li>One goal of HS Courser is to provide high school students with a convenient (more convenient than posting stories on Instagram/Snapchat and messaging people directly) method of seeing their friends' schedules at the beginning of and during a school year. Schedules will include classes and periods. Another goal of HS Courser is to help high school students make new friends based on the classes and classmates they have.</li>
 				</ul>
 				<div class="section_title">Your Journey</div>
 				<ul class="about_ul">
