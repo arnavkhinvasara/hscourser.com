@@ -126,6 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     		<option value="mhs+milpitas">MHS</option>
                     		<option value="hhs+cupertino">Homestead</option>
                     		<option value="sfhs+mountain_view">Saint Francis</option>
+                    		<option value="chs+san_ramon">Cal High</option>
                     	</select>
 					</div>
 					<div class="container">
