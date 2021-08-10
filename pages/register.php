@@ -3,7 +3,7 @@ $err_mess = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$full_name = trim($_POST["full_name"]);
 	$email = trim($_POST["email"]);
-	$username = str_replace(" ", "+", $full_name);
+	$username = str_replace(" ", "+", $full_name).strval(rand(0, 10000));
 	$password = trim($_POST["password"]);
 	$confpw = trim($_POST["confpw"]);
 	$referred = trim($_POST["referred"]);
@@ -12,6 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	//validation
 	if (!$full_name || !$email || !$username || !$password || !$confpw || !$referred || $school=="Select"){
 		$err_mess = "All fields are required.";
+	}
+	elseif ($school=="email_request"){
+		$err_mess = "<a href='https://mail.google.com/mail/u/0/#inbox?compose=new' target='_blank'>Send Request</a>. You can register once your school is added to the list.";
 	}
 	elseif (count(explode(" ", $full_name))<2){
 		$err_mess = "Please include your full name (first and last).";
@@ -99,7 +102,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			align-items: center;
 		}
 		.wrapper{
-			width: 30%;
 			justify-content: center;
 			font-family: 'Montserrat', sans-serif;
 			border: 3px solid cornflowerblue;
@@ -182,7 +184,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<div class="container">
 					<span class="err"><?php echo $err_mess; ?></span>
 				</div>
-				<form class="check_form" action="/register" method="post">
+				<form class="check_form" action="/hscourser.com/register" method="post">
 					<div class="container">
 						<div class="checklist_textbox" id="for_full_name">
 							<div class="container">
@@ -226,6 +228,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 		<option value="mhs+milpitas" <?php if(isset($school)){if($school=="mhs+milpitas"){echo "selected='selected'";}} ?>>MHS</option>
                                                 		<option value="hhs+cupertino" <?php if(isset($school)){if($school=="hhs+cupertino"){echo "selected='selected'";}} ?>>Homestead</option>
                                                 		<option value="sfhs+mountain_view" <?php if(isset($school)){if($school=="sfhs+mountain_view"){echo "selected='selected'";}} ?>>Saint Francis</option>
+                                                		<option value="email_request" <?php if(isset($school)){if($school=="email_request"){echo "selected='selected'";}} ?>>Send School Request To hscourser@gmail.com</option>
                                                 	</select>
                                                 </div>
                                         </div>
