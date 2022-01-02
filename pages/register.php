@@ -184,7 +184,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<div class="container">
 					<span class="err"><?php echo $err_mess; ?></span>
 				</div>
-				<form class="check_form" action="/hscourser.com/register" method="post">
+				<form class="check_form" action="/register" method="post">
 					<div class="container">
 						<div class="checklist_textbox" id="for_full_name">
 							<div class="container">
